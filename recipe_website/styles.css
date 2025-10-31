@@ -1,0 +1,18 @@
+/* styles.css */
+
+* {
+    outline: 2px solid black;
+}
+
+.small-title{
+    color: blue;
+    font-size: 32px;
+}
+
+.link-lasagna {
+    background-color: chartreuse;
+}
+
+li {
+    font-size: 24px;
+}
