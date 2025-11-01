@@ -1,5 +1,10 @@
+.block {
+    padding-left: 15%;
+    padding-right: 15%;
+}
 
 body {
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -14,7 +19,10 @@ body {
     align-content: center;
     background-color: #1f2937;
     color: white;
-    padding: 10px;
+    padding-top: 10px;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    padding-bottom: 60px;
 }
 
 .right-links {
@@ -38,38 +46,112 @@ a {
     display: flex;
     background-color: #1f2937;
     color: #f9faf8;
-    height: 200px;
+    /* height: 200px; */
+    /* padding-left: 10%;
+    padding-right: 10%; */
+    padding-bottom: 50px;
 }
 
 .left-part {
     display: flex;
     flex-direction: column;
+    /* outline: 2px solid white; */
 }
 
 .title {
     font-size: 48px;
     font-weight: 900;
+    width:50%;
+    /* outline: 2px solid white; */
+    /* outline: 2px solid white; */
 }
 
 p {
     width: 50%;
+    /* outline: 2px solid white; */
 }
 
 .signup {
-    flex-basis: 20px;
+    /* outline: 2px solid white; */
+    align-self: flex-start;
+    background-color: #3882F6;
+    border: 2px solid #3882F6;
+    height: 30px;
+    width: 70px;
+    color: #E5E7EB;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-
-.section-two {
-}
-
-.section-three {
+.right-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* outline: 2px solid white; */
+    width: 60%;
     background-color: gray;
 }
 
+
+
+.section-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* outline: 2px solid black; */
+    padding-bottom: 60px;
+}
+
+.header-text {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 32px;
+    font-weight: 900;
+    color: #1f2937;
+}
+
+.squares {
+    display: flex;
+    justify-content: space-evenly;
+    /* border: 2px solid black; */
+    gap: 50px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.square {
+    height: 130px;
+    width: 130px;
+    border-radius: 10px;
+    border: 3px solid #3882F6;
+}
+
+.caption {
+    /* border: 2px solid black; */
+    font-size: 15px;
+    width: 130px;
+    text-align: center;
+}
+
+
+.section-three {
+    background-color: gray;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+}
+
 .section-foor {
+    /* padding-left: 10%;
+    padding-right: 10%; */
 }
 
 .footer {
+    /* padding-left: 10%;
+    padding-right: 10%; */
     background-color: blue;
 }
