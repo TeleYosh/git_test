@@ -16,21 +16,21 @@ function getHumanChoice() {
     return choice;
 }
 
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice, roundDiv) {
     let humanScoreRound = 0;
     let computerScoreRound = 0;
     humanChoice = humanChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
     if (beats.get(humanChoice) == computerChoice) {
-        console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+        roundDiv.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
         humanScoreRound += 1;
     }
     else if (beats.get(computerChoice) == humanChoice) {
-        console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
+        roundDiv.textContent = `You lose, ${computerChoice} beats ${humanChoice}`;
         computerScoreRound += 1;
     }
     else {
-        console.log(`It is a tie, you chose ${humanChoice}, and the computer chose ${computerChoice}`);
+        roundDiv.textContent = `It is a tie, you chose ${humanChoice}, and the computer chose ${computerChoice}`;
     }
     return [humanScoreRound, computerScoreRound];
 }
@@ -64,5 +64,48 @@ function playGame() {
 }
 
 // execution
-playGame();
+function playWithUi() {
+    let humanScore = 0;
+    let computerScore = 0;
+    let currentWinner;
+    let winnerScore;
+
+    const resultDiv = document.querySelector('#result');
+    const scoreDiv = document.querySelector('#score');
+    const buttons = document.querySelectorAll('button');
+    const roundDiv = document.querySelector('.round');
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const computerChoice = getComputerChoice();
+            const [humanScoreRound, computerScoreRound] = playRound(button.id, computerChoice, roundDiv);
+            humanScore += humanScoreRound;
+            computerScore += computerScoreRound;
+            if (humanScore > computerScore) {
+                currentWinner = 'You';
+                winnerScore = humanScore;
+            }
+            else if (humanScore < computerScore) {
+                currentWinner = 'AI';
+                winnerScore = computerScore;
+            }
+            else {
+                currentWinner = 'No one';
+            }
+            scoreDiv.textContent = `Humanscore: ${humanScore} | Computerscore: ${computerScore}`;
+            // console.log(`humanscore: ${humanScore} computerscore: ${computerScore}`);
+            // console.log(`current winner ${currentWinner}`);
+            if (winnerScore == 5) {
+                resultDiv.textContent = `Winner is ${currentWinner}`;
+                // console.log(`Game finished, winner is ${currentWinner}`)
+                buttons.forEach(b => b.disabled = true);
+            };
+        });
+    });
+
+
+
+}
+
+playWithUi()
 
