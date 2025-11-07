@@ -14,6 +14,13 @@ body {
     height: 50px;
 }
 
+#size {
+    font-size: 25px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 50px;
+}
+
 .container {
     display: flex;
     flex-direction: column;

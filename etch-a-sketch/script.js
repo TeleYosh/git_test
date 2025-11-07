@@ -1,6 +1,6 @@
 const grid = document.querySelector('.container');
 const [nRows, nCols] = [16, 16];
-// const gridLenght = '30px';
+let gridSquares;
 
 function generateGrid(nRows, nCols) {
     for (let i=1; i<nRows+1; i++) {
@@ -36,15 +36,29 @@ function wipeGrid(gridSquares) {
     })
 }
 
-generateGrid(nRows, nCols);
-
-const gridSquares = document.querySelectorAll('.gridSquare');
-gridSquares.forEach((square) => {
+function activateHovering(gridSquares) {
+    gridSquares.forEach((square) => {
     square.addEventListener('mouseover', (e) => {
             square.style.backgroundColor = 'rgba(0, 0, 0, 0.35)';
         }
         )
     })
+}
+
+function setUpGrid(nRows, nCols) {
+    grid.innerHTML = '';
+    generateGrid(nRows, nCols);
+    gridSquares = document.querySelectorAll('.gridSquare');
+    activateHovering(gridSquares);
+}
+
+setUpGrid(nRows, nCols);
 
 const reset = document.querySelector('#reset');
-reset.addEventListener('click', (e) => wipeGrid(gridSquares))
+reset.addEventListener('click', () => wipeGrid(gridSquares));
+
+const size = document.querySelector('#size');
+size.addEventListener('click', () => {
+    const n = Number(prompt('Choose the grid size:'));
+    if (n > 0) setUpGrid(n, n);
+})
