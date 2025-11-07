@@ -8,18 +8,43 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    background-color: #fff;
+    background-image: linear-gradient(#f6f6f6 1px,transparent 1px),linear-gradient(to right,#f6f6f6 1px,#fff 1px);
+    background-size: 20px 20px;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    background-color: mediumaquamarine;
-    height: 50px;
-    width: 90%;
-    /* outline: 2px solid black; */
-    border-end-start-radius: 25px;
-    border-end-end-radius: 25px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(120deg, #7fffd4, #40e0d0, #00ced1);
+  box-shadow: 0 0 20px rgba(252, 0, 255, 0.3);
+  height: 50px;
+  width: 90%;
+  border-end-start-radius: 25px;
+  border-end-end-radius: 25px;
+  margin-bottom: 20px;
+  color: #003333;
+}
+
+.header button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.header button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.header button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .home {
@@ -67,7 +92,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color:darkviolet;
+    color: darkviolet;
     font-size: 30px;
     outline: 2px solid darkviolet;
     padding: 20px;
@@ -98,17 +123,17 @@ body {
 
 .actions {
     display: flex;
-    justify-content: space-around;
+    gap: 10px;
     align-items: center;
-    /* outline: 2px solid black; */
     width: 500px;
     height: 70px;
 }
 
 .actions button {
-    background: #fbbc3f;
     cursor: pointer;
-    background: radial-gradient(circle, rgba(251, 188, 63, 0.95) 0%, rgba(252, 70, 107, 1) 100%);
+    flex: 1;
+    background: linear-gradient(120deg, #7fffd4, #40e0d0, #00ced1);
+    box-shadow: 0 0 20px rgba(252, 0, 255, 0.3);
     font-size: 20px;
     height: 50px;
     width: 150px;
@@ -123,7 +148,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: mediumaquamarine;
+    background: linear-gradient(120deg, #7fffd4, #40e0d0, #00ced1);
     width: 100%;
     /* outline: 2px solid green; */
     height: 40px;
