@@ -39,7 +39,8 @@ function wipeGrid(gridSquares) {
 function activateHovering(gridSquares) {
     gridSquares.forEach((square) => {
     square.addEventListener('mouseover', (e) => {
-            square.style.backgroundColor = 'rgba(0, 0, 0, 0.35)';
+            const [red, green, blue] = [Math.random()*255, Math.random()*255, Math.random()*255];
+            square.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, 0.35)`;
         }
         )
     })
