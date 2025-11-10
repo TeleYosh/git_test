@@ -95,3 +95,47 @@ equalButton.addEventListener('click', () => {
     updateDisplay(a);
     updateUpperDisplay(b);
 })
+
+// secret combination
+const secretSequence = ['5', '6', '-', 'x'];
+let inputSequence = [];
+
+const buttonsContainer = document.querySelector('.buttons').addEventListener(
+    'click', async (e) => {
+        const clickedButton = e.target;
+        const val = clickedButton.textContent.trim();
+        inputSequence.push(val);
+        if (inputSequence.length > secretSequence.length) {
+            inputSequence.shift();
+        }
+        if (inputSequence.join('') === secretSequence.join('')) {
+            inputSequence = [];
+            await loadSecretApp();
+        }
+    }
+)
+
+async function loadSecretApp() {
+    try {
+        // load html
+        const response = await fetch('secret/secret.html');
+        const html = await response.text();
+        console.log(`html ${html}`)
+        const calContainer = document.querySelector('.container');
+        calContainer.innerHTML = html;
+
+        // load css 
+        const secretCSS = document.createElement('Link');
+        secretCSS.rel = 'stylesheet';
+        secretCSS.href = 'secret/secret.css';
+        document.head.appendChild(secretCSS);
+
+        // load js
+        const secretScript = document.createElement('script');
+        secretScript.src = 'secret/secret.js';
+        document.head.appendChild(secretScript);
+
+    } catch (err) {
+        console.error('Failed to load secret app:', err);
+    }
+}
