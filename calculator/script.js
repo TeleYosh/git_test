@@ -59,39 +59,79 @@ const symbol2op = new Map([
     ['x', multiply],
     ['÷', divide]
 ])
+const op2neutral = new Map([
+    ['+', '0'],
+    ['-', '0'],
+    ['x', '1'],
+    ['÷', '1']
+])
 
 let currentOp;
+let previousOp;
 
-const opButtons = document.querySelectorAll('.op');
+// const opButtons = document.querySelectorAll('.op');
+// opButtons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//         operation = button.textContent;
+//         if (operation == '+') {
+//             if (previousOp) {
+//                 b = symbol2op.get(previousOp)(b, a).toString();
+//             }
+//             else {
+//                 b = a;
+//             }
+//             a = '0';
+//             currentOp = '+';
+
+//         }
+//         else if (operation == '-') {
+//             if (b == '0') {
+//                 b = a ;
+//                 a = '0';
+//             }
+//             else {
+//             b = substract(b, a);
+//             a = '0';
+//             }
+//             currentOp = '-';
+//         }
+//         updateDisplay(a);
+//         updateUpperDisplay(b);
+//     })
+// })
+
+const opButtons = document.querySelectorAll('.op:not(#equal)');
 opButtons.forEach((button) => {
     button.addEventListener('click', () => {
         operation = button.textContent;
-        if (operation == '+') {
-            b = add(a, b).toString();
-            a = '0';
-            currentOp = '+';
+        if (previousOp) {
+            b = symbol2op.get(previousOp)(b, a).toString();
         }
-        else if (operation == '-') {
-            if (b == '0') {
-                b = a ;
-                a = '0';
-            }
-            else {
-            b = substract(b, a);
-            a = '0';
-            }
-            currentOp = '-';
+        else {
+            b = a;
         }
+        a = '0';
+        console.log(`a ${a} b ${b} op ${operation} previous ${previousOp}`);
+        previousOp = operation;
         updateDisplay(a);
         updateUpperDisplay(b);
     })
 })
 
+// plus-minus button
+const pmButton = document.querySelector('#plus-minus');
+pmButton.addEventListener('click', () => {
+    int_val = parseInt(a, 10)
+    a = -int_val.toString();
+    updateDisplay(a);
+})
+
 // equal button
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
-    a = symbol2op.get(currentOp)(b, a).toString();
+    a = symbol2op.get(previousOp)(b, a).toString();
     b = '0';
+    previousOp = '';
     updateDisplay(a);
     updateUpperDisplay(b);
 })
@@ -114,13 +154,11 @@ const buttonsContainer = document.querySelector('.buttons').addEventListener(
         }
     }
 )
-
 async function loadSecretApp() {
     try {
         // load html
         const response = await fetch('secret/secret.html');
         const html = await response.text();
-        console.log(`html ${html}`)
         const calContainer = document.querySelector('.container');
         calContainer.innerHTML = html;
 
