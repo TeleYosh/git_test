@@ -52,53 +52,19 @@ function multiply(a, b) {
 function divide(a, b) {
     return parseInt(a)/parseInt(b);
 }
+function modulo(a, b) {
+    return parseInt(a)%parseInt(b);
+}
 
 const symbol2op = new Map([
     ['+', add],
     ['-', substract],
     ['x', multiply],
-    ['÷', divide]
-])
-const op2neutral = new Map([
-    ['+', '0'],
-    ['-', '0'],
-    ['x', '1'],
-    ['÷', '1']
+    ['÷', divide],
+    ['%', modulo]
 ])
 
-let currentOp;
 let previousOp;
-
-// const opButtons = document.querySelectorAll('.op');
-// opButtons.forEach((button) => {
-//     button.addEventListener('click', () => {
-//         operation = button.textContent;
-//         if (operation == '+') {
-//             if (previousOp) {
-//                 b = symbol2op.get(previousOp)(b, a).toString();
-//             }
-//             else {
-//                 b = a;
-//             }
-//             a = '0';
-//             currentOp = '+';
-
-//         }
-//         else if (operation == '-') {
-//             if (b == '0') {
-//                 b = a ;
-//                 a = '0';
-//             }
-//             else {
-//             b = substract(b, a);
-//             a = '0';
-//             }
-//             currentOp = '-';
-//         }
-//         updateDisplay(a);
-//         updateUpperDisplay(b);
-//     })
-// })
 
 const opButtons = document.querySelectorAll('.op:not(#equal)');
 opButtons.forEach((button) => {
@@ -111,7 +77,6 @@ opButtons.forEach((button) => {
             b = a;
         }
         a = '0';
-        console.log(`a ${a} b ${b} op ${operation} previous ${previousOp}`);
         previousOp = operation;
         updateDisplay(a);
         updateUpperDisplay(b);
@@ -129,7 +94,9 @@ pmButton.addEventListener('click', () => {
 // equal button
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
-    a = symbol2op.get(previousOp)(b, a).toString();
+    if (previousOp) {
+        a = symbol2op.get(previousOp)(b, a).toString();
+    }
     b = '0';
     previousOp = '';
     updateDisplay(a);

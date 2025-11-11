@@ -21,14 +21,15 @@ body {
     align-self: stretch;
     text-align: end;
     height: 40px;
-    font-size: 20px;
-    color: white;
+    font-size: 40px;
+    color: rgb(195, 195, 195);
     margin: 10px 10px 5px 10px;
     padding: 5px;
-    outline: 2px solid white;
+    /* outline: 2px solid white; */
 }
 
 .display {
+
     align-self: stretch;
     text-align: end;
     height: 100px;
@@ -36,7 +37,7 @@ body {
     color: white;
     margin: 5px 10px 10px 10px;
     padding: 5px;
-    outline: 2px solid white;
+    /* outline: 2px solid white; */
 }
 
 button {
@@ -70,7 +71,7 @@ button#zero {
     gap: 5px;
 }
 
-button.op {
+button.rightop {
     background-color: orange;
 }
 
